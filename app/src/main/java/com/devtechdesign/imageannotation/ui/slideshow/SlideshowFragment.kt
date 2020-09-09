@@ -27,29 +27,13 @@ class SlideshowFragment : Fragment() {
             savedInstanceState: Bundle?
     ): View? {
         slideshowViewModel =
-                ViewModelProviders.of(this).get(SlideshowViewModel::class.java)
+            ViewModelProviders.of(this).get(SlideshowViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_slideshow, container, false)
         val textView: TextView = root.findViewById(R.id.tvTitle)
         slideshowViewModel.text.observe(viewLifecycleOwner, Observer {
             textView.text = it
         })
-
-        var iv = root.findViewById<ImageView>(R.id.ivImageView)
-        drawLineOnImage(iv)
-
         return root
-    }
-
-    fun drawLineOnImage(imageView : ImageView)
-    {
-
-        var bitmap = convertViewToDrawable(imageView)
-//        val bitmap: Bitmap = Bitmap.createBitmap(100, 100, Bitmap.Config.ARGB_8888)
-        val canvas = Canvas(bitmap)
-        val paint = Paint(Paint.ANTI_ALIAS_FLAG)
-        paint.setColor(Color.GREEN)
-        canvas.drawLine(50f, 50f, 10f,10f, paint)
-        imageView.setImageBitmap(bitmap)
     }
 
     private fun convertViewToDrawable(view: View): Bitmap {

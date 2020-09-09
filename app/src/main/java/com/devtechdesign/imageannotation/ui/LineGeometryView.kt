@@ -28,7 +28,7 @@ class LineGeometryView @JvmOverloads constructor(
     var y2: Float = 0f
 
     override fun onTouchEvent(event: MotionEvent?): Boolean {
-        if(isActivated) {
+        if(isEnabled) {
             Log.d("ontouch", event?.action.toString())
 
             event?.let {
