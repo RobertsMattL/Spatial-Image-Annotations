@@ -7,23 +7,6 @@
     tools:context=".ui.slideshow.SlideshowFragment">
 
 
-    <ImageView
-        android:id="@+id/ivImageView"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:src="@drawable/beam_sturcture"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <com.devtechdesign.imageannotation.ui.DrawView
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView android:id="@+id/tvTitle"
         android:layout_height="wrap_content"
