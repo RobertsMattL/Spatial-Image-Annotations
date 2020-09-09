@@ -30,9 +30,10 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.devtechdesign.imageannotation.ui.DrawView
+    <com.devtechdesign.imageannotation.ui.LineGeometryView
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:src="@drawable/beam_sturcture"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
