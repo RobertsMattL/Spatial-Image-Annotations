@@ -2,6 +2,7 @@ package com.devtechdesign.imageannotation.ui
 
 import android.content.Context
 import android.graphics.Bitmap
+import android.graphics.Canvas
 import android.graphics.drawable.Drawable
 import android.util.AttributeSet
 import android.view.View
@@ -10,9 +11,11 @@ import android.widget.ImageView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.children
 import com.devtechdesign.imageannotation.R
-import kotlinx.android.synthetic.main.annotated_image_view.view.*
+import com.devtechdesign.imageannotation.ui.home.HomeFragment
 
 class AnnotatedImageView : FrameLayout {
+
+    private lateinit var dragListener: IAnnotatedImageViewDragListener
 
     constructor(context: Context) : super(context) {
         init(null, 0)
@@ -47,8 +50,18 @@ class AnnotatedImageView : FrameLayout {
         val params = ConstraintLayout.LayoutParams(
             ConstraintLayout.LayoutParams.WRAP_CONTENT, ConstraintLayout.LayoutParams.WRAP_CONTENT
         )
+
+
+        geometryView.setDragListner(object : LineGeometryView.IViewDragListener {
+            override fun onDrag(x2: Float, y2: Float) {
+                var bitmap = loadBitmapFromView(root)
+                dragListener.onDrag(x2, y2, bitmap)
+            }
+        })
+
+
         geometryView.layoutParams = params
-        params.leftToLeft =  root.id
+        params.leftToLeft = root.id
         params.topToTop = root.id
         params.bottomToBottom = root.id
         params.rightToRight = root.id
@@ -64,5 +77,40 @@ class AnnotatedImageView : FrameLayout {
                 child.isEnabled = false
             }
         }
+    }
+
+    fun loadBitmapFromView(view: View): Bitmap? {
+        //Get the dimensions of the view so we can re-layout the view at its current size
+        //and create a bitmap of the same size
+        val width = view.width
+        val height = view.height
+        val measuredWidth = MeasureSpec.makeMeasureSpec(
+            width,
+            MeasureSpec.EXACTLY
+        )
+        val measuredHeight = MeasureSpec.makeMeasureSpec(
+            height,
+            MeasureSpec.EXACTLY
+        )
+
+        //Cause the view to re-layout
+        view.measure(measuredWidth, measuredHeight)
+        view.layout(0, 0, view.measuredWidth, view.measuredHeight)
+
+        //Create a bitmap backed Canvas to draw the view into
+        val b = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888)
+        val c = Canvas(b)
+
+        //Now that the view is laid out and we have a canvas, ask the view to draw itself into the canvas
+        view.draw(c)
+        return b
+    }
+
+    fun setDragListner(iViewDragListener: AnnotatedImageView.IAnnotatedImageViewDragListener) {
+        this.dragListener = iViewDragListener
+    }
+
+    interface IAnnotatedImageViewDragListener {
+        fun onDrag(x2: Float, y2: Float, bitmap: Bitmap?)
     }
 }

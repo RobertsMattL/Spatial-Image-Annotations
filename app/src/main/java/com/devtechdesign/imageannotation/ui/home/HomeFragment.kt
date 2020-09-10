@@ -1,5 +1,7 @@
 package com.devtechdesign.imageannotation.ui.home
 
+import android.graphics.Bitmap
+import android.graphics.drawable.InsetDrawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -27,7 +29,7 @@ class HomeFragment : Fragment() {
     ): View? {
         homeViewModel =
             ViewModelProviders.of(this).get(HomeViewModel::class.java)
-         this.root = inflater.inflate(R.layout.fragment_home, container, false)
+        this.root = inflater.inflate(R.layout.fragment_home, container, false)
         val textView: TextView = root?.findViewById(R.id.text_home)!!
         homeViewModel.text.observe(viewLifecycleOwner, Observer {
             textView.text = it
@@ -48,5 +50,15 @@ class HomeFragment : Fragment() {
         var lineGeometryView = LineGeometryView(requireContext())
         val annotatedImageView: AnnotatedImageView? = root?.findViewById(R.id.annotatedImageView)
         annotatedImageView?.addGeometry(lineGeometryView)
+        annotatedImageView?.setDragListner(object :
+            AnnotatedImageView.IAnnotatedImageViewDragListener {
+            override fun onDrag(x2: Float, y2: Float, bitmap: Bitmap?) {
+                bitmap?.let {
+                    Bitmap.createBitmap(it, x2.toInt() - 100, y2.toInt() - 100, 200, 200)?.let {
+                        ivPreview.setImageBitmap(it)
+                    }
+                }
+            }
+        })
     }
 }

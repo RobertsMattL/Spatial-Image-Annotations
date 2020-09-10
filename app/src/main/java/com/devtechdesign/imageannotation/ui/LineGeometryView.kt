@@ -7,12 +7,14 @@ import android.util.AttributeSet
 import android.util.Log
 import android.view.MotionEvent
 import android.view.View
+import com.devtechdesign.imageannotation.ui.home.HomeFragment
 
 
 class LineGeometryView @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
 ) : View(context, attrs, defStyleAttr) {
 
+    private var dragListner: IViewDragListener? = null
     private val text: String = "65' 5\""
     private var lineInitialized = false
     private val STROKE_WIDTH: Float = 4f
@@ -28,7 +30,7 @@ class LineGeometryView @JvmOverloads constructor(
     var y2: Float = 0f
 
     override fun onTouchEvent(event: MotionEvent?): Boolean {
-        if(isEnabled) {
+        if (isEnabled) {
             Log.d("ontouch", event?.action.toString())
 
             event?.let {
@@ -43,6 +45,7 @@ class LineGeometryView @JvmOverloads constructor(
                     MotionEvent.ACTION_MOVE -> {
                         x2 = event.x
                         y2 = event.y
+                        dragListner?.onDrag(x2, y2)
                         this.invalidate()
                     }
                 }
@@ -135,5 +138,13 @@ class LineGeometryView @JvmOverloads constructor(
         textPaint.textSize = TEXT_SIZE
         textPaint.isDither = true
         textPaint.isAntiAlias = true
+    }
+
+    fun setDragListner(iViewDragListener: IViewDragListener) {
+        this.dragListner = iViewDragListener
+    }
+
+    interface IViewDragListener{
+        fun onDrag(x2: Float, y2: Float)
     }
 }
