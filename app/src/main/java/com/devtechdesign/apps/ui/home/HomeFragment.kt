@@ -13,7 +13,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.devtechdesign.apps.R
 import com.devtechdesign.libs.imageannotation.AnnotatedImageView
-import com.devtechdesign.libs.imageannotation.LineGeometryView
+import com.devtechdesign.libs.imageannotation.LineOverlay
 import kotlinx.android.synthetic.main.fragment_home.*
 
 class HomeFragment : Fragment() {
@@ -49,7 +49,7 @@ class HomeFragment : Fragment() {
             .show()
 
         var lineGeometryView =
-            LineGeometryView(
+            LineOverlay(
                 requireContext()
             )
         val annotatedImageView: AnnotatedImageView? = root?.findViewById(R.id.annotatedImageView)

@@ -15,7 +15,7 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.devtechdesign.libs.imageannotation.LineGeometryView
+    <com.devtechdesign.libs.imageannotation.LineOverlay
         android:id="@+id/lineGeometryView"
         android:layout_width="0dp"
         android:layout_height="0dp"

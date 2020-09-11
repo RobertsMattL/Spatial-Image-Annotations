@@ -43,14 +43,14 @@ class AnnotatedImageView : FrameLayout {
         findViewById<ImageView>(R.id.imageView).setImageDrawable(drawable)
     }
 
-    fun addGeometry(geometryView: LineGeometryView) {
+    fun addGeometry(geometryView: LineOverlay) {
         var root = findViewById<ConstraintLayout>(R.id.root)
         val params = ConstraintLayout.LayoutParams(
             ConstraintLayout.LayoutParams.WRAP_CONTENT, ConstraintLayout.LayoutParams.WRAP_CONTENT
         )
 
 
-        geometryView.setDragListner(object : LineGeometryView.IViewDragListener {
+        geometryView.setDragListner(object : LineOverlay.IViewDragListener {
             override fun onDrag(x2: Float, y2: Float) {
                 var bitmap = loadBitmapFromView(root)
                 dragListener.onDrag(x2, y2, bitmap)
@@ -71,7 +71,7 @@ class AnnotatedImageView : FrameLayout {
 
     private fun disableGeometryViews(root: ConstraintLayout) {
         for (child in root.children) {
-            if (child is LineGeometryView) {
+            if (child is LineOverlay) {
                 child.isEnabled = false
             }
         }
