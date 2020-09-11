@@ -6,6 +6,7 @@
     android:layout_height="match_parent">
 
     <ImageView
+        android:id="@+id/imageView"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:src="@drawable/beam_sturcture"
@@ -14,7 +15,7 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.devtechdesign.imageannotation.ui.LineGeometryView
+    <com.devtechdesign.libs.imageannotation.LineGeometryView
         android:id="@+id/lineGeometryView"
         android:layout_width="0dp"
         android:layout_height="0dp"

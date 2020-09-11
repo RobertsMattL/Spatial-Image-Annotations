@@ -1,4 +1,4 @@
-package com.devtechdesign.imageannotation.ui
+package com.devtechdesign.libs.imageannotation
 
 import android.content.Context
 import android.graphics.*
@@ -7,7 +7,6 @@ import android.util.AttributeSet
 import android.util.Log
 import android.view.MotionEvent
 import android.view.View
-import com.devtechdesign.imageannotation.ui.home.HomeFragment
 
 
 class LineGeometryView @JvmOverloads constructor(

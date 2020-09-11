@@ -1,20 +1,16 @@
-package com.devtechdesign.imageannotation.ui.slideshow
+package com.devtechdesign.apps.ui.slideshow
 
 import android.graphics.Bitmap
 import android.graphics.Canvas
-import android.graphics.Color
-import android.graphics.Paint
-import android.graphics.drawable.BitmapDrawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
-import com.devtechdesign.imageannotation.R
+import com.devtechdesign.apps.R
 
 
 class SlideshowFragment : Fragment() {

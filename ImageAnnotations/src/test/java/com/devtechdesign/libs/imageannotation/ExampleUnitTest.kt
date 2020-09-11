@@ -1,4 +1,4 @@
-package com.devtechdesign.imageannotation
+package com.devtechdesign.libs.imageannotation
 
 import org.junit.Test
 

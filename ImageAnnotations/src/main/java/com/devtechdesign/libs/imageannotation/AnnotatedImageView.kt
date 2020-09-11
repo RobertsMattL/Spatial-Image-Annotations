@@ -1,4 +1,4 @@
-package com.devtechdesign.imageannotation.ui
+package com.devtechdesign.libs.imageannotation
 
 import android.content.Context
 import android.graphics.Bitmap
@@ -10,8 +10,7 @@ import android.widget.FrameLayout
 import android.widget.ImageView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.children
-import com.devtechdesign.imageannotation.R
-import com.devtechdesign.imageannotation.ui.home.HomeFragment
+import com.devtechdesign.libs.imageannotation.R
 
 class AnnotatedImageView : FrameLayout {
 
@@ -106,7 +105,7 @@ class AnnotatedImageView : FrameLayout {
         return b
     }
 
-    fun setDragListner(iViewDragListener: AnnotatedImageView.IAnnotatedImageViewDragListener) {
+    fun setDragListner(iViewDragListener: IAnnotatedImageViewDragListener) {
         this.dragListener = iViewDragListener
     }
 

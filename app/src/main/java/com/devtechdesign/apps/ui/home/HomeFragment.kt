@@ -1,7 +1,6 @@
-package com.devtechdesign.imageannotation.ui.home
+package com.devtechdesign.apps.ui.home
 
 import android.graphics.Bitmap
-import android.graphics.drawable.InsetDrawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -12,9 +11,9 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
-import com.devtechdesign.imageannotation.R
-import com.devtechdesign.imageannotation.ui.AnnotatedImageView
-import com.devtechdesign.imageannotation.ui.LineGeometryView
+import com.devtechdesign.apps.R
+import com.devtechdesign.libs.imageannotation.AnnotatedImageView
+import com.devtechdesign.libs.imageannotation.LineGeometryView
 import kotlinx.android.synthetic.main.fragment_home.*
 
 class HomeFragment : Fragment() {
@@ -47,11 +46,14 @@ class HomeFragment : Fragment() {
         Toast.makeText(context, R.string.click_image_to_begin_adding_geometry, Toast.LENGTH_SHORT)
             .show()
 
-        var lineGeometryView = LineGeometryView(requireContext())
+        var lineGeometryView =
+            LineGeometryView(
+                requireContext()
+            )
         val annotatedImageView: AnnotatedImageView? = root?.findViewById(R.id.annotatedImageView)
         annotatedImageView?.addGeometry(lineGeometryView)
         annotatedImageView?.setDragListner(object :
-            AnnotatedImageView.IAnnotatedImageViewDragListener {
+        AnnotatedImageView.IAnnotatedImageViewDragListener {
             override fun onDrag(x2: Float, y2: Float, bitmap: Bitmap?) {
                 bitmap?.let {
                     Bitmap.createBitmap(it, x2.toInt() - 100, y2.toInt() - 100, 200, 200)?.let {

@@ -21,7 +21,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.devtechdesign.imageannotation.ui.AnnotatedImageView
+    <com.devtechdesign.libs.imageannotation.AnnotatedImageView
         android:id="@+id/annotatedImageView"
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -40,8 +40,8 @@
 
     <ImageView
         android:id="@+id/ivPreview"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:layout_margin="20dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

@@ -1,2 +1,3 @@
+include ':ImageAnnotations'
 include ':app'
 rootProject.name = "ImageAnnotation"

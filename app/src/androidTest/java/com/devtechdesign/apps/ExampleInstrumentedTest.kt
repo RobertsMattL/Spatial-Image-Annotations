@@ -1,4 +1,4 @@
-package com.devtechdesign.imageannotation
+package com.devtechdesign.apps
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4

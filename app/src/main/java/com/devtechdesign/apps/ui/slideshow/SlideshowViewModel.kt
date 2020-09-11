@@ -1,4 +1,4 @@
-package com.devtechdesign.imageannotation.ui.slideshow
+package com.devtechdesign.apps.ui.slideshow
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

@@ -1,4 +1,4 @@
-package com.devtechdesign.imageannotation.ui.home
+package com.devtechdesign.apps.ui.home
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
