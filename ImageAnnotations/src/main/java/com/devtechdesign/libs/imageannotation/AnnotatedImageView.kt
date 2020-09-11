@@ -3,7 +3,6 @@ package com.devtechdesign.libs.imageannotation
 import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.Canvas
-import android.graphics.drawable.Drawable
 import android.util.AttributeSet
 import android.view.View
 import android.widget.FrameLayout
@@ -39,8 +38,8 @@ class AnnotatedImageView : FrameLayout {
         findViewById<ImageView>(R.id.imageView).setImageBitmap(bitmap)
     }
 
-    fun setImageDrawable(drawable: Drawable) {
-        findViewById<ImageView>(R.id.imageView).setImageDrawable(drawable)
+    fun setImageResource(drawable: Int) {
+        findViewById<ImageView>(R.id.imageView).setImageResource(drawable)
     }
 
     fun addGeometry(geometryView: LineOverlay) {

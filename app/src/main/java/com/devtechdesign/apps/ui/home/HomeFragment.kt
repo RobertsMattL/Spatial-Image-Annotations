@@ -52,8 +52,11 @@ class HomeFragment : Fragment() {
             LineOverlay(
                 requireContext()
             )
+
         val annotatedImageView: AnnotatedImageView? = root?.findViewById(R.id.annotatedImageView)
+        annotatedImageView?.setImageResource(R.drawable.beam_sturcture)
         annotatedImageView?.addGeometry(lineGeometryView)
+
         annotatedImageView?.setDragListner(object :
             AnnotatedImageView.IDragListener {
             override fun onDrag(x2: Float, y2: Float, bitmap: Bitmap?) {
