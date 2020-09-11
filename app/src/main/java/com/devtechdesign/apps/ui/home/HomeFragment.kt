@@ -2,12 +2,16 @@ package com.devtechdesign.apps.ui.home
 
 import android.graphics.Bitmap
 import android.os.Bundle
+import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.widget.AppCompatEditText
+import androidx.core.widget.addTextChangedListener
+import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -18,6 +22,7 @@ import kotlinx.android.synthetic.main.fragment_home.*
 
 class HomeFragment : Fragment() {
 
+    private var currentLineGeomOverlay: LineOverlay? = null
     var PREVIEW_WIDTH = 200
     var PREVIEW_HEIGHT = 200
     private var root: View? = null
@@ -41,6 +46,13 @@ class HomeFragment : Fragment() {
         btnAdd.setOnClickListener {
             onAddButtonClick()
         }
+
+        val etText: AppCompatEditText = root?.findViewById(R.id.etAnnotationText)!!
+        etText.addTextChangedListener {
+            it?.let {
+                currentLineGeomOverlay?.setText(it.toString())
+            }
+        }
         return root
     }
 
@@ -56,6 +68,8 @@ class HomeFragment : Fragment() {
         val annotatedImageView: AnnotatedImageView? = root?.findViewById(R.id.annotatedImageView)
         annotatedImageView?.setImageResource(R.drawable.beam_sturcture)
         annotatedImageView?.addGeometry(lineGeometryView)
+
+        this.currentLineGeomOverlay = lineGeometryView
 
         annotatedImageView?.setDragListner(object :
             AnnotatedImageView.IDragListener {

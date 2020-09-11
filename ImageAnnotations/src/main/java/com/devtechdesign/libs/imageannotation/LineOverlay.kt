@@ -14,7 +14,7 @@ class LineOverlay @JvmOverloads constructor(
 ) : View(context, attrs, defStyleAttr) {
 
     private var dragListner: IViewDragListener? = null
-    private val text: String = "65' 5\""
+    private var annotationText: String = ""
     private var lineInitialized = false
     private val STROKE_WIDTH: Float = 4f
     private val TEXT_STROKE_WIDTH: Float = 1f
@@ -87,7 +87,7 @@ class LineOverlay @JvmOverloads constructor(
 
         var horizontalTextPosition = (dist / 2).toFloat()
         canvas.drawTextOnPath(
-            text,
+            annotationText,
             path,
             -horizontalTextPosition,
             textHeight,
@@ -141,6 +141,11 @@ class LineOverlay @JvmOverloads constructor(
 
     fun setDragListner(iViewDragListener: IViewDragListener) {
         this.dragListner = iViewDragListener
+    }
+
+    fun setText(text: String) {
+        this.annotationText = text
+        this.invalidate()
     }
 
     interface IViewDragListener{
