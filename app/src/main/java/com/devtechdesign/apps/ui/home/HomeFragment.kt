@@ -18,6 +18,8 @@ import kotlinx.android.synthetic.main.fragment_home.*
 
 class HomeFragment : Fragment() {
 
+    var PREVIEW_WIDTH = 200
+    var PREVIEW_HEIGHT = 200
     private var root: View? = null
     private lateinit var homeViewModel: HomeViewModel
 
@@ -53,12 +55,16 @@ class HomeFragment : Fragment() {
         val annotatedImageView: AnnotatedImageView? = root?.findViewById(R.id.annotatedImageView)
         annotatedImageView?.addGeometry(lineGeometryView)
         annotatedImageView?.setDragListner(object :
-        AnnotatedImageView.IAnnotatedImageViewDragListener {
+            AnnotatedImageView.IDragListener {
             override fun onDrag(x2: Float, y2: Float, bitmap: Bitmap?) {
                 bitmap?.let {
-                    Bitmap.createBitmap(it, x2.toInt() - 100, y2.toInt() - 100, 200, 200)?.let {
-                        ivPreview.setImageBitmap(it)
-                    }
+                    var xPreview = x2.toInt() - 100
+                    var yPreview = y2.toInt() - 100
+                    if (xPreview > 0 && yPreview > 0 && xPreview + PREVIEW_WIDTH <= bitmap.width && yPreview + PREVIEW_HEIGHT <= bitmap.height)
+                        Bitmap.createBitmap(it, xPreview, yPreview, PREVIEW_WIDTH, PREVIEW_HEIGHT)
+                            ?.let {
+                                ivPreview.setImageBitmap(it)
+                            }
                 }
             }
         })

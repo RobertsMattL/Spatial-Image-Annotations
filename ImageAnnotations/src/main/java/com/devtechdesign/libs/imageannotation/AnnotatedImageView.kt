@@ -10,11 +10,10 @@ import android.widget.FrameLayout
 import android.widget.ImageView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.children
-import com.devtechdesign.libs.imageannotation.R
 
 class AnnotatedImageView : FrameLayout {
 
-    private lateinit var dragListener: IAnnotatedImageViewDragListener
+    private lateinit var dragListener: IDragListener
 
     constructor(context: Context) : super(context) {
         init(null, 0)
@@ -105,11 +104,11 @@ class AnnotatedImageView : FrameLayout {
         return b
     }
 
-    fun setDragListner(iViewDragListener: IAnnotatedImageViewDragListener) {
+    fun setDragListner(iViewDragListener: IDragListener) {
         this.dragListener = iViewDragListener
     }
 
-    interface IAnnotatedImageViewDragListener {
+    interface IDragListener {
         fun onDrag(x2: Float, y2: Float, bitmap: Bitmap?)
     }
 }
